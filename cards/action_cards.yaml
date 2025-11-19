@@ -1,0 +1,45 @@
+- name: "Economic Boost"
+  card_type: "Action"
+  effects:
+    - type: "points"
+      category: "E"
+  point_values:
+    E: 5
+    P: 0
+
+- name: "Political Maneuver"
+  card_type: "Action"
+  effects:
+    - type: "points"
+      category: "P"
+  point_values:
+    E: 0
+    P: 3
+
+- name: "Trade Agreement"
+  card_type: "Action"
+  effects:
+    - type: "points"
+      category: "E"
+  point_values:
+    E: 4
+    P: 1
+
+- name: "Public Speech"
+  card_type: "Action"
+  effects:
+    - type: "points"
+      category: "P"
+  point_values:
+    E: 1
+    P: 5
+
+- name: "Infrastructure Development"
+  card_type: "Action"
+  effects:
+    - type: "points"
+      category: "E"
+  point_values:
+    E: 6
+    P: 2
+

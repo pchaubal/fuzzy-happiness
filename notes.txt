@@ -1,0 +1,82 @@
+## Milestones
+1. **Design Game Mechanics**:
+   - Define win conditions, including specific criteria for winning.
+   - Outline the types of action cards with detailed descriptions of each type.
+   - Outline the types of situation cards with detailed descriptions of their effects.
+   - Determine the scoring system for Economy (E) and Political Power (P) points.
+   - Establish rules for drawing cards from the deck, including the number of cards drawn.
+   - Define the order of play and rules for each turn.
+   - Establish how situation cards are revealed and their impact on gameplay.
+
+2. **Implement Card Logic**:
+   - Create a class for action cards:
+     - Define properties such as name, type, effects, and point values.
+     - Implement methods for applying effects to players.
+   - Develop a class for situation cards:
+     - Define properties for impact on players and the game state.
+     - Implement methods for resolving situation card effects.
+   - Ensure card interactions are handled properly, including potential conflicts.
+   - Create a method to shuffle cards and manage the draw pile.
+
+3. **Develop Game Engine**:
+   - Build the main game loop:
+     - Implement logic for turn-based gameplay.
+     - Track player scores and current game state.
+   - Implement functionality for drawing cards from both action and situation card piles:
+     - Ensure proper handling of the card deck and discard pile.
+   - Develop functions for managing game state transitions (e.g., starting a new game, ending the game).
+   - Implement logic to check win conditions at the end of each turn.
+
+4. **Create User Interface**:
+   - Design a console-based or graphical user interface:
+     - Plan the layout for displaying player information and game state.
+     - Implement features for showing current scores and available actions.
+   - Handle user inputs to allow players to make decisions:
+     - Implement input validation for player actions.
+     - Create feedback mechanisms for user actions (e.g., confirming card plays).
+   - Ensure the interface is user-friendly and intuitive.
+
+5. **Testing**:
+   - Develop unit tests for card logic and game mechanics:
+     - Validate card effects and interactions.
+     - Test game state transitions and turn management.
+   - Conduct playtesting sessions to identify balance issues:
+     - Monitor actual gameplay to gather feedback on mechanics.
+     - Adjust card values and effects based on testing outcomes.
+   - Implement automated tests to ensure ongoing stability as features change.
+
+6. **Documentation**:
+   - Create comprehensive user guides:
+     - Write detailed instructions on how to play the game.
+     - Include explanations for each card type and their effects.
+   - Document the codebase:
+     - Use comments to explain complex logic and functionality.
+     - Create technical documentation for developers outlining class structures and methods.
+   - Ensure that the README provides clear setup instructions and game information.
+
+## Software Architecture
+- **main.py**: Entry point of the game that initializes the game loop.
+  - **start_game()**: Initializes game state and starts the main loop. Returns the initial game state.
+  - **end_game()**: Handles end game procedures and displays results. Returns the final scores and winner.
+
+- **game.py**: Contains the core game logic and manages the game state.
+  - **draw_cards(player)**: Allows a player to draw cards from the deck. Returns the drawn cards.
+  - **play_card(player, card)**: Manages the logic for a player playing a card. Returns updated game state after the card is played.
+  - **check_win_condition()**: Checks if any player has met the win conditions. Returns a boolean indicating if there's a winner.
+
+- **cards.py**: Defines the action card and situation card classes, and handles loading action cards from a YAML file.
+  - **load_action_cards(file_path)**: Loads action cards from a specified YAML file and returns a list of ActionCard instances.
+  - **ActionCard**: Class with properties such as name, type, effects, and point values.
+    - **apply_effect(player)**: Applies the card's effect to a player. Returns updated player attributes.
+  - **SituationCard**: Class that defines how situation cards impact players and the game state.
+    - **resolve()**: Resolves the effects of the situation card on the game state. Returns updated game state.
+
+- **player.py**: Manages player attributes and actions.
+  - **Player**: Class representing a player with attributes like name, scores, and hand.
+    - **update_scores(points)**: Updates the player's scores based on actions taken. Returns updated score values.
+    - **draw_hand()**: Draws a set number of cards into the player's hand. Returns the player's current hand.
+
+- **utils.py**: Contains utility functions for shuffling cards and random selections.
+  - **shuffle_deck(deck)**: Shuffles the provided deck of cards. Returns the shuffled deck.
+  - **random_selection(cards)**: Selects a random card from the provided list. Returns the selected card.
+
